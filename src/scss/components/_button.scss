@@ -1,0 +1,45 @@
+@import "../variables";
+
+.button {
+  background-color: $orange;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  min-width: 100px;
+  transition: all $duration ease-in-out;
+
+  &:hover {
+    background-color: darken($orange, 5%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    background-color: darken($orange, 10%);
+  }
+
+  &__cart {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+  }
+
+  &__partition {
+    width: 1px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin: 0 15px;
+  }
+
+  svg {
+    margin-right: 8px;
+  }
+
+  span {
+    font: {
+      weight: 700;
+      size: 16px;
+    }
+    color: #fff;
+  }
+}
