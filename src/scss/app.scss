@@ -37,3 +37,11 @@ body {
   margin: 0 auto;
   width: $container-width;
 }
+
+.content {
+  padding: 40px;
+
+  &__sort {
+    display: flex;
+  }
+}
