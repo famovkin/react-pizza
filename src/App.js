@@ -1,4 +1,4 @@
-import { Header, Categories } from "./components";
+import { Header, Categories, SortPopup } from "./components";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
           <Categories
             items={["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"]}
           />
+          <SortPopup items={["популярности", "цене", "алфавиту"]} />
         </div>
       </div>
     </div>

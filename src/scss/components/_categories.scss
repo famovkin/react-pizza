@@ -2,7 +2,12 @@
 
 .categories {
   display: flex;
+  flex: 1;
+  max-width: 80%;
+  overflow: auto;
   gap: 8px;
+  margin-right: 20px;
+  padding-bottom: 9px;
 
   li {
     background-color: #f9f9f9;

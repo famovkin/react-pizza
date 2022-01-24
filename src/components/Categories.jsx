@@ -3,6 +3,8 @@ import React, { useState } from "react";
 function Cateroties({ items }) {
   const [activeCategory, setActiveCategory] = useState(null);
 
+  const onClickCategory = (index) => setActiveCategory(index);
+
   return (
     <div className="categories">
       <li
@@ -16,7 +18,7 @@ function Cateroties({ items }) {
           return (
             <li
               className={activeCategory === index ? "active" : ""}
-              onClick={() => setActiveCategory(index)}
+              onClick={() => onClickCategory(index)}
               key={`${item}${index}`}
             >
               {item}
