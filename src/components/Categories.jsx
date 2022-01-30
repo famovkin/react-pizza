@@ -6,7 +6,7 @@ function Cateroties({ items }) {
   const onClickCategory = (index) => setActiveCategory(index);
 
   return (
-    <div className="categories">
+    <div className="categories content__categories">
       <li
         className={activeCategory === null ? "active" : ""}
         onClick={() => setActiveCategory(null)}

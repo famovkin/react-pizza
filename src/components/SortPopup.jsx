@@ -27,7 +27,7 @@ function SortPopup({ items }) {
   }, []);
 
   return (
-    <div ref={sortRef} className="sort">
+    <div ref={sortRef} className="sort content__sort">
       <div className="sort__label">
         <svg
           className={isPopupOpened ? "rotated" : ""}
