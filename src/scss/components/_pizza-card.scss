@@ -1,6 +1,13 @@
 .pizza-card {
   text-align: center;
 
+  @media (max-width: 768px) {
+    &:not(:last-of-type) {
+      border-bottom: 1px solid $gray;
+      padding-bottom: 25px;
+    }
+  }
+
   &__image {
     width: 260px;
     object-fit: contain;
@@ -46,14 +53,14 @@
   }
 
   &__buy {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__price {
-      font-size: 22px;
-      line-height: 27px;
-      font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 700;
   }
 }
