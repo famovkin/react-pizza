@@ -1,0 +1,59 @@
+.pizza-card {
+  text-align: center;
+
+  &__image {
+    width: 260px;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: $gray;
+    border-radius: 10px;
+    padding: 6px;
+    margin-bottom: 20px;
+
+    ul {
+      display: flex;
+
+      li {
+        flex: 1;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &.active {
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+          border-radius: 4px;
+        }
+
+        &.disabled {
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &__buy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  &__price {
+      font-size: 22px;
+      line-height: 27px;
+      font-weight: 700;
+  }
+}

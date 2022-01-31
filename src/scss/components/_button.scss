@@ -3,9 +3,10 @@
 .button {
   background-color: $orange;
   outline: none;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   border-radius: 30px;
+  padding: 10px 20px;
   min-width: 100px;
   transition: all $duration ease-in-out;
 
@@ -41,5 +42,38 @@
       size: 16px;
     }
     color: #fff;
+  }
+
+  &__outline {
+    background-color: #fff;
+    border-color: $orange;
+
+    span {
+      color: $orange;
+    }
+
+    svg {
+      path {
+        fill: $orange;
+      }
+    }
+
+    &:hover {
+      background-color: $orange;
+
+      span {
+        color: #fff;
+      }
+
+      svg {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+
+  &:active {
+    background-color: darken($orange, 8%);
   }
 }
