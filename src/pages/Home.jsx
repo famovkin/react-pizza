@@ -1,7 +1,7 @@
 import React from "react";
 import { Categories, SortPopup, PizzaCard } from "../components";
 
-function Home() {
+function Home({ pizzas }) {
   return (
     <div className="content">
       <div className="content__sort">
@@ -12,10 +12,9 @@ function Home() {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__grid">
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
+        {pizzas.map((pizza) => (
+          <PizzaCard key={pizza.id} {...pizza} />
+        ))}
       </div>
     </div>
   );
