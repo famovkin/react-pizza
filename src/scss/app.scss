@@ -11,6 +11,10 @@
   font-family: "Proxima Nova", Roboto;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   min-width: 400px;
   background-color: $background;
