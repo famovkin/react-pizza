@@ -73,4 +73,19 @@ function PizzaCard({ name, imageUrl, price, types, sizes }) {
   );
 }
 
+PizzaCard.propTypes = {
+  name: PropTypes.string,
+  imageUrl: PropTypes.string,
+  price: PropTypes.number,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+}
+
+PizzaCard.defaultProps = {
+  name: 'Название пиццы',
+  price: 0,
+  types: [],
+  sizes: [],
+}
+
 export default PizzaCard;
