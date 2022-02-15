@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 
-function Cateroties({ items }) {
+const Categories = React.memo(function Categories({ items, onClickItem }) {
   const [activeCategory, setActiveCategory] = useState(null);
 
-  const onClickCategory = (index) => setActiveCategory(index);
-
+  const onClickCategory = (index) => {
+    setActiveCategory(index);
+    onClickItem(index);
+  };
+  
   return (
     <div className="categories content__categories">
       <li
         className={activeCategory === null ? "active" : ""}
-        onClick={() => setActiveCategory(null)}
+        onClick={() => onClickCategory(null)}
       >
         Все
       </li>
@@ -27,6 +30,6 @@ function Cateroties({ items }) {
         })}
     </div>
   );
-}
+});
 
-export default Cateroties;
+export default Categories;
