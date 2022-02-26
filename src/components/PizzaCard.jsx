@@ -1,10 +1,9 @@
-import React from "react";
-import { Button } from "../components";
-import { useState } from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { Button } from "../components";
 
-function PizzaCard({ name, imageUrl, price, types, sizes }) {
+function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
   const availableTypes = ["тонкое", "традиционное"];
   const availableSizes = [26, 30, 40];
   const [activeType, setActiveType] = useState(types[0]);
@@ -15,11 +14,7 @@ function PizzaCard({ name, imageUrl, price, types, sizes }) {
 
   return (
     <div className="pizza-card">
-      <img
-        className="pizza-card__image"
-        src={imageUrl}
-        alt={name}
-      />
+      <img className="pizza-card__image" src={imageUrl} alt={name} />
       <h3 className="pizza-card__title">{name}</h3>
       <div className="pizza-card__settings">
         <ul>
@@ -79,13 +74,13 @@ PizzaCard.propTypes = {
   price: PropTypes.number,
   types: PropTypes.arrayOf(PropTypes.number).isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-}
+};
 
 PizzaCard.defaultProps = {
-  name: 'Название пиццы',
+  name: "Название пиццы",
   price: 0,
   types: [],
   sizes: [],
-}
+};
 
 export default PizzaCard;
