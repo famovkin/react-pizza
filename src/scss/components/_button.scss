@@ -71,9 +71,22 @@
         }
       }
     }
+
+    &:active {
+      background-color: darken($orange, 8%);
+    }
   }
 
-  &:active {
-    background-color: darken($orange, 8%);
+  &__black {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    width: 210px;
+    background-color: $black;
+
+    &:hover,
+    &:active {
+      background-color: lighten($black, 20%);
+    }
   }
 }
