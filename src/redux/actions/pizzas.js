@@ -3,8 +3,14 @@ export const setPizzas = (pizzas) => ({
   payload: pizzas,
 });
 
-export const fetchPizzas = () => (dispatch) => {
-  fetch("http://localhost:3001/pizzas")
+export const setLoaded = (boolean) => ({
+  type: "SET_LOADED",
+  payload: boolean,
+});
+
+export const fetchPizzas = (sortBy, category) => (dispatch) => {
+  dispatch(setLoaded(false));
+  fetch(`http://localhost:3001/pizzas?${ category !== null ? `category=${category}` : ''}&_sort=${sortBy}&_order=asc`)
       .then((res) => res.json())
       .then((data) => (dispatch(setPizzas(data))));
 };

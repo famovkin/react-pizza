@@ -4,6 +4,7 @@ import ContentLoader from "react-content-loader";
 function PizzaLoadingCard() {
   return (
     <ContentLoader
+      className="pizza-card"
       speed={2}
       width={290}
       height={455}

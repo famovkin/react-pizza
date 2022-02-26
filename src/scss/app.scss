@@ -70,7 +70,7 @@ body {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, 285px);
     column-gap: 40px;
     row-gap: 70px;
     @media (max-width: 768px) {
