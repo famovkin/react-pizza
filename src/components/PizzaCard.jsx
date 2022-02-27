@@ -13,7 +13,7 @@ function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
   const changeSize = (index) => setActiveSize(sizes[index]);
 
   return (
-    <div className="pizza-card">
+    <div className={`pizza-card ${isLoaded ? 'pizza-card__stretched' : ''}` }>
       <img className="pizza-card__image" src={imageUrl} alt={name} />
       <h3 className="pizza-card__title">{name}</h3>
       <div className="pizza-card__settings">

@@ -1,5 +1,10 @@
 .pizza-card {
   text-align: center;
+  justify-self: center;
+
+  &__stretched {
+    justify-self: stretch;
+  }
 
   @media (max-width: 768px) {
     &:not(:last-of-type) {

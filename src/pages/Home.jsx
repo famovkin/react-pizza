@@ -58,7 +58,7 @@ function Home() {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__grid">
         {isLoaded
-          ? items.map((pizza) => <PizzaCard key={pizza.id} {...pizza} />)
+          ? items.map((pizza) => <PizzaCard key={pizza.id} isLoaded={isLoaded} {...pizza} />)
           : Array(10)
               .fill(0)
               .map((number, index) => <PizzaLoadingCard key={index} />)}
