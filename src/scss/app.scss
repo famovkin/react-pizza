@@ -70,11 +70,28 @@ body {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 285px);
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    @media (max-width: 1380px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 1090px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
     column-gap: 40px;
     row-gap: 70px;
     @media (max-width: 768px) {
       row-gap: 50px;
     }
+  }
+
+  &__cart {
+    margin: 0 auto;
   }
 }

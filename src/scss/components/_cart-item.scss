@@ -1,0 +1,179 @@
+@import "../variables";
+
+.cart-item {
+  display: flex;
+  width: 100;
+  border-top: 1px solid $gray;
+  padding-top: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__image {
+    display: flex;
+    width: 10%;
+    margin-right: 30px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: center;
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+
+      @media (max-width: 768px) {
+        width: 60%;
+        height: 60%;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+
+    .cart-item__title {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    .cart-item__props {
+      font-size: 18px;
+      color: $dark-grey;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      text-align: center;
+      align-items: center;
+
+      .cart-item__title {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .cart-item__props {
+        font-size: 22px;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .cart-item__title {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15%;
+
+    .cart-item__minus-btn {
+      svg {
+        path:first-of-type {
+          display: none;
+        }
+      }
+    }
+
+    .cart-item__counter {
+      font-size: 22px;
+    }
+
+    @media (max-width: 768px) {
+      width: 130px;
+      align-self: center;
+      margin-bottom: 20px;
+
+      .button {
+        width: 40px;
+        height: 40px;
+
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+      .cart-item__counter {
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+
+    b {
+      font-size: 22px;
+    }
+
+    @media (max-width: 768px) {
+      align-self: flex-end;
+
+      b {
+        font-size: 30px;
+      }
+    }
+  }
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    svg {
+      transform: rotate(45deg);
+
+      path {
+        fill: darken($gray, 15%);
+      }
+    }
+
+    .button {
+      border-color: darken($gray, 15%);
+
+      svg {
+        width: 11.5px;
+        height: 11.5px;
+        position: relative;
+      }
+
+      &:hover,
+      &:active {
+        border-color: darken($gray, 80%);
+        background-color: darken($gray, 80%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      position: absolute;
+      right: 0;
+
+      .button {
+        width: 40px;
+        height: 40px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
