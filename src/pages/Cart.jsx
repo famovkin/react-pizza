@@ -132,7 +132,7 @@ function Cart() {
               </Button>
             </div>
             <div className="cart-item__price">
-              <b>245 ₽</b>
+              <b>245 <span className="rub">P</span></b>
             </div>
             <div className="cart-item__remove">
               <Button outline circle>
@@ -162,7 +162,7 @@ function Cart() {
               Всего пицц: <b>1 шт.</b>
             </span>
             <span>
-              Сумма заказа: <b>245 ₽</b>
+              Сумма заказа: <b>245 <span className="rub rub_type_orange">P</span></b>
             </span>
           </div>
           <div className="cart__checkout-buttons">

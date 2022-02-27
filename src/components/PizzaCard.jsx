@@ -47,7 +47,7 @@ function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
         </ul>
       </div>
       <div className="pizza-card__buy">
-        <p className="pizza-card__price">от {price} &#8381;</p>
+        <p className="pizza-card__price">от {price} <span className="rub">P</span></p>
         <Button className="button__add" outline>
           <svg
             width="12"

@@ -19,7 +19,7 @@ function Header() {
         <div className="header__cart">
           <Link to="/cart">
             <Button className="button__cart">
-              <span>0 ₽</span>
+              <span>0 <span className="rub rub_type_white">P</span></span>
               <div className="button__partition"></div>
               <svg
                 width="18"
