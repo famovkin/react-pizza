@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../mixins.scss";
 
 .button {
   background-color: $orange;
@@ -9,6 +10,7 @@
   padding: 10px 20px;
   min-width: 100px;
   transition: all $duration ease-in-out;
+  @include noselect();
 
   &:hover {
     background-color: darken($orange, 5%);
@@ -90,8 +92,28 @@
   }
 
   &__add {
+    height: 46px;
+
     svg {
       margin-right: 5px;
+    }
+
+    &:hover {
+      b {
+        background-color: $white;
+        color: $orange;
+      }
+    }
+
+    b {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      font-size: 13px;
+      border-radius: 30px;
+      background-color: $orange;
+      color: $white;
+      line-height: 25px;
     }
   }
 
