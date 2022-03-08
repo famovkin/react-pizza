@@ -3,17 +3,39 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Button } from "../components";
 
-function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
+function PizzaCard({
+  id,
+  name,
+  imageUrl,
+  price,
+  types,
+  sizes,
+  isLoaded,
+  onAddPizzaToCart,
+  pizzasInCart,
+}) {
   const availableTypes = ["тонкое", "традиционное"];
   const availableSizes = [26, 30, 40];
   const [activeType, setActiveType] = useState(types[0]);
-  const [activeSize, setActiveSize] = useState(sizes[0]);
+  const [activeSize, setActiveSize] = useState(0);
 
   const changeType = (index) => setActiveType(index);
-  const changeSize = (index) => setActiveSize(sizes[index]);
+  const changeSize = (index) => setActiveSize(index);
+
+  const onAddPizza = () => {
+    const pizza = {
+      id,
+      name,
+      imageUrl,
+      type: availableTypes[activeType],
+      size: availableSizes[activeSize],
+      price,
+    };
+    onAddPizzaToCart(pizza);
+  };
 
   return (
-    <div className={`pizza-card ${isLoaded ? 'pizza-card__stretched' : ''}` }>
+    <div className={`pizza-card ${isLoaded ? "pizza-card__stretched" : ""}`}>
       <img className="pizza-card__image" src={imageUrl} alt={name} />
       <h3 className="pizza-card__title">{name}</h3>
       <div className="pizza-card__settings">
@@ -37,7 +59,7 @@ function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
               key={size}
               onClick={() => changeSize(index)}
               className={classNames({
-                active: activeSize === sizes[index],
+                active: activeSize === index,
                 disabled: !sizes.includes(size),
               })}
             >
@@ -47,8 +69,10 @@ function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
         </ul>
       </div>
       <div className="pizza-card__buy">
-        <p className="pizza-card__price">от {price} <span className="rub">P</span></p>
-        <Button className="button__add" outline>
+        <p className="pizza-card__price">
+          от {price} <span className="rub">P</span>
+        </p>
+        <Button onClick={onAddPizza} className="button__add" outline>
           <svg
             width="12"
             height="12"
@@ -61,7 +85,9 @@ function PizzaCard({ name, imageUrl, price, types, sizes, isLoaded }) {
               fill="white"
             />
           </svg>
-          <span>Добавить</span>
+          <span>
+            Добавить {pizzasInCart && <b>{pizzasInCart}</b>}
+          </span>
         </Button>
       </div>
     </div>
@@ -74,6 +100,8 @@ PizzaCard.propTypes = {
   price: PropTypes.number,
   types: PropTypes.arrayOf(PropTypes.number).isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onAddPizzaToCart: PropTypes.func,
+  pizzasInCart: PropTypes.number,
 };
 
 PizzaCard.defaultProps = {

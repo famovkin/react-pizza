@@ -8,6 +8,7 @@ import {
 } from "../components";
 import { setCategory, setSortBy } from "../redux/actions/filters";
 import { fetchPizzas } from "../redux/actions/pizzas";
+import { addPizzaToCart } from "../redux/actions/cart";
 
 const categoryNames = [
   "Мясные",
@@ -26,6 +27,7 @@ const sortItems = [
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector(({ pizzasReducer }) => pizzasReducer.items);
+  const cartItems = useSelector(({ cartReducer }) => cartReducer.items);
   const isLoaded = useSelector(({ pizzasReducer }) => pizzasReducer.isLoaded);
   const { category, sortBy } = useSelector(
     ({ filterReducer }) => filterReducer
@@ -41,6 +43,10 @@ function Home() {
     [dispatch]
   );
 
+  const onAddPizzaToCart = (pizzaObj) => {
+    dispatch(addPizzaToCart(pizzaObj));
+  };
+
   useEffect(() => {
     dispatch(fetchPizzas(sortBy, category));
   }, [dispatch, category, sortBy]);
@@ -53,12 +59,24 @@ function Home() {
           onClickCategory={onSelectCategory}
           activeCategoryIndex={category}
         />
-        <SortPopup activeSortType={sortBy} items={sortItems} onClickSortPopup={onSelectSortType}/>
+        <SortPopup
+          activeSortType={sortBy}
+          items={sortItems}
+          onClickSortPopup={onSelectSortType}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__grid">
         {isLoaded
-          ? items.map((pizza) => <PizzaCard key={pizza.id} isLoaded={isLoaded} {...pizza} />)
+          ? items.map((pizza) => (
+              <PizzaCard
+                key={pizza.id}
+                onAddPizzaToCart={onAddPizzaToCart}
+                pizzasInCart={cartItems[pizza.id] && cartItems[pizza.id].length}
+                isLoaded={isLoaded}
+                {...pizza}
+              />
+            ))
           : Array(10)
               .fill(0)
               .map((number, index) => <PizzaLoadingCard key={index} />)}
