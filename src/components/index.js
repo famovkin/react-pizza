@@ -4,5 +4,14 @@ import Categories from "./Categories";
 import SortPopup from "./SortPopup";
 import PizzaCard from "./PizzaCard";
 import PizzaLoadingCard from "./PizzaLoadingCard";
+import CartItem from "./CartItem";
 
-export { Button, Header, Categories, SortPopup, PizzaCard, PizzaLoadingCard };
+export {
+  Button,
+  Header,
+  Categories,
+  SortPopup,
+  PizzaCard,
+  PizzaLoadingCard,
+  CartItem,
+};

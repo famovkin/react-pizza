@@ -72,7 +72,7 @@ function Home() {
               <PizzaCard
                 key={pizza.id}
                 onAddPizzaToCart={onAddPizzaToCart}
-                pizzasInCart={cartItems[pizza.id] && cartItems[pizza.id].length}
+                pizzasInCart={cartItems[pizza.id] && cartItems[pizza.id]["items"].length}
                 isLoaded={isLoaded}
                 {...pizza}
               />

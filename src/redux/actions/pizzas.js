@@ -10,7 +10,7 @@ export const setLoaded = (boolean) => ({
 
 export const fetchPizzas = (sortBy, category) => (dispatch) => {
   dispatch(setLoaded(false));
-  fetch(`http://localhost:3001/pizzas?${ category !== null ? `category=${category}` : ''}&_sort=${sortBy}&_order=asc`)
+  fetch(`/pizzas?${ category !== null ? `category=${category}` : ''}&_sort=${sortBy}&_order=asc`)
       .then((res) => res.json())
       .then((data) => (dispatch(setPizzas(data))));
 };
