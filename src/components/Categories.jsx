@@ -7,7 +7,7 @@ const Categories = React.memo(function Categories({
   activeCategoryIndex,
 }) {
   return (
-    <div className="categories content__categories">
+    <ul className="categories content__categories">
       <li
         className={activeCategoryIndex === null ? "active" : ""}
         onClick={() => onClickCategory(null)}
@@ -26,7 +26,7 @@ const Categories = React.memo(function Categories({
             </li>
           );
         })}
-    </div>
+    </ul>
   );
 });
 

@@ -152,9 +152,6 @@ function Cart() {
                   <span>Вернуться назад</span>
                 </Button>
               </Link>
-              <Button>
-                <span>Оплатить сейчас</span>
-              </Button>
             </div>
           </div>
         </div>
