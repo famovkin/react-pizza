@@ -1,22 +1,24 @@
+import { PizzasState, PizzasActions } from '../../types/pizzas';
+
 const initialState = {
   items: [],
   isLoaded: false,
 };
 
-const pizzas = (state = initialState, action) => {
+const pizzas = (state = initialState, action: PizzasActions): PizzasState => {
   switch (action.type) {
-    case "SET_PIZZAS":
+    case 'SET_PIZZAS':
       return {
         ...state,
         items: action.payload,
         isLoaded: true,
       };
 
-    case "SET_LOADED":
+    case 'SET_LOADED':
       return {
         ...state,
         isLoaded: action.payload,
-      }
+      };
 
     default:
       return state;
