@@ -110,6 +110,7 @@ function Cart() {
                   name={pizza.name}
                   type={pizza.type}
                   size={pizza.size}
+                  image={pizza.imageUrl}
                   totalPrice={items[pizza.id].totalPrice}
                   totalCount={items[pizza.id].items.length}
                   deleteItem={handleDeleteItem}

@@ -11,6 +11,7 @@ function CartItem({
   id,
   handlePlusClick,
   handleMinusClick,
+  image,
 }) {
   const onDeleteCartItem = () => deleteItem(id);
   const onPlus = () => handlePlusClick(id);
@@ -20,7 +21,7 @@ function CartItem({
     <div className="cart-item cart__cart-item">
       <div className="cart-item__image">
         <img
-          src="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+          src={image}
           alt="pizza"
         />
       </div>
