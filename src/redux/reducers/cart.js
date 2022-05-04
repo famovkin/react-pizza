@@ -1,97 +1,102 @@
 const initialState = {
-  items: {},
+  pizzas: {},
   totalPrice: 0,
   totalCount: 0,
 };
 
 const getTotalPrice = (array) => {
-  return array.reduce((sum, priceItem) => sum + priceItem["price"], 0);
+  return array.reduce((sum, item) => sum + item['price'], 0);
 };
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_PIZZA_CART": {
-      const currentPizzaItems = !state.items[action.payload.id]
+    case 'ADD_PIZZA_CART': {
+      const addedPizzaGroup = !state.pizzas[action.payload.id]
         ? [action.payload]
-        : [...state.items[action.payload.id].items, action.payload];
+        : [...state.pizzas[action.payload.id].pizzaGroup, action.payload];
 
-      const newItems = {
-        ...state.items,
+      const updatedPizzas = {
+        ...state.pizzas,
         [action.payload.id]: {
-          items: currentPizzaItems,
-          totalPrice: getTotalPrice(currentPizzaItems),
+          pizzaGroup: addedPizzaGroup,
+          totalPriceGroup: getTotalPrice(addedPizzaGroup),
         },
       };
 
-      const oneKindPizza = Object.values(newItems).map((obj) => obj.items);
-      const allPizzas = [].concat.apply([], oneKindPizza);
+      const allPizzas = Object.values(updatedPizzas).map(
+        (obj) => obj.pizzaGroup
+      );
+      const allPizzasInArray = [].concat.apply([], allPizzas);
 
       return {
         ...state,
-        items: newItems,
-        totalCount: allPizzas.length,
-        totalPrice: getTotalPrice(allPizzas),
+        pizzas: updatedPizzas,
+        totalCount: allPizzasInArray.length,
+        totalPrice: getTotalPrice(allPizzasInArray),
       };
     }
 
-    case "CLEAR_CART": {
+    case 'CLEAR_CART': {
       return {
-        items: {},
+        pizzas: {},
         totalPrice: 0,
         totalCount: 0,
       };
     }
 
-    case "REMOVE_CART_ITEM": {
-      const updatedItems = { ...state.items };
-      const deletedTotalPrice = updatedItems[action.payload].totalPrice;
-      const deletedTotalCount = updatedItems[action.payload].items.length;
-      delete updatedItems[action.payload];
+    case 'REMOVE_CART_ITEM': {
+      const updatedPizzas = { ...state.pizzas };
+      const deletedTotalPrice = updatedPizzas[action.payload].totalPriceGroup;
+      const deletedTotalCount = updatedPizzas[action.payload].pizzaGroup.length;
+      delete updatedPizzas[action.payload];
 
       return {
         ...state,
-        items: updatedItems,
+        pizzas: updatedPizzas,
         totalPrice: state.totalPrice - deletedTotalPrice,
         totalCount: state.totalCount - deletedTotalCount,
       };
     }
 
-    case "PLUS_CART_ITEM": {
-      const currentPizzaItems = [
-        ...state.items[action.payload].items,
-        state.items[action.payload].items[0],
+    case 'PLUS_CART_ITEM': {
+      const increasedPizzaItems = [
+        ...state.pizzas[action.payload].pizzaGroup,
+        state.pizzas[action.payload].pizzaGroup[0],
       ];
 
       return {
         ...state,
-        items: {
-          ...state.items,
+        pizzas: {
+          ...state.pizzas,
           [action.payload]: {
-            items: currentPizzaItems,
-            totalPrice: getTotalPrice(currentPizzaItems),
+            pizzaGroup: increasedPizzaItems,
+            totalPriceGroup: getTotalPrice(increasedPizzaItems),
           },
         },
         totalPrice:
-          state.totalPrice + state.items[action.payload].items[0].price,
+          state.totalPrice + state.pizzas[action.payload].pizzaGroup[0].price,
         totalCount: state.totalCount + 1,
       };
     }
 
-    case "MINUS_CART_ITEM": {
-      const oldItems = state.items[action.payload].items;
-      const newItems = oldItems.length > 1 ? oldItems.slice(1) : oldItems;
+    case 'MINUS_CART_ITEM': {
+      const currentPizzaGroup = state.pizzas[action.payload].pizzaGroup;
+      const updatedPizzaGroup =
+        currentPizzaGroup.length > 1
+          ? currentPizzaGroup.slice(1)
+          : currentPizzaGroup;
 
       return {
         ...state,
-        items: {
-          ...state.items,
+        pizzas: {
+          ...state.pizzas,
           [action.payload]: {
-            items: newItems,
-            totalPrice: getTotalPrice(newItems),
+            pizzaGroup: updatedPizzaGroup,
+            totalPriceGroup: getTotalPrice(updatedPizzaGroup),
           },
         },
         totalPrice:
-          state.totalPrice - state.items[action.payload].items[0].price,
+          state.totalPrice - state.pizzas[action.payload].pizzaGroup[0].price,
         totalCount: state.totalCount - 1,
       };
     }

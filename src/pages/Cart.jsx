@@ -13,10 +13,10 @@ import cartEmptyImage from "../images/cartEmptyImage.jpg";
 
 function Cart() {
   const dispatch = useDispatch();
-  const { items, totalPrice, totalCount } = useSelector(
+  const { pizzas, totalPrice, totalCount } = useSelector(
     ({ cartReducer }) => cartReducer
   );
-  const addedPizzas = Object.keys(items).map((key) => items[key].items[0]);
+  const addedPizzas = Object.keys(pizzas).map((key) => pizzas[key].pizzaGroup[0]);
   const handleClearCart = () => dispatch(clearCart());
   const handleDeleteItem = (id) => dispatch(removeCartItem(id));
   const handlePlusClick = (id) => dispatch(plusCartItem(id));
@@ -111,8 +111,8 @@ function Cart() {
                   type={pizza.type}
                   size={pizza.size}
                   image={pizza.imageUrl}
-                  totalPrice={items[pizza.id].totalPrice}
-                  totalCount={items[pizza.id].items.length}
+                  totalPrice={pizzas[pizza.id].totalPriceGroup}
+                  totalCount={pizzas[pizza.id].pizzaGroup.length}
                   deleteItem={handleDeleteItem}
                   handlePlusClick={handlePlusClick}
                   handleMinusClick={handleMinusClick}

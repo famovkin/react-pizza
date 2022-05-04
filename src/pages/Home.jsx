@@ -27,7 +27,7 @@ const sortItems = [
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector(({ pizzasReducer }) => pizzasReducer.items);
-  const cartItems = useSelector(({ cartReducer }) => cartReducer.items);
+  const cartItems = useSelector(({ cartReducer }) => cartReducer.pizzas);
   const isLoaded = useSelector(({ pizzasReducer }) => pizzasReducer.isLoaded);
   const { category, sortBy } = useSelector(
     ({ filterReducer }) => filterReducer
@@ -72,7 +72,7 @@ function Home() {
               <PizzaCard
                 key={pizza.id}
                 onAddPizzaToCart={onAddPizzaToCart}
-                pizzasInCart={cartItems[pizza.id] && cartItems[pizza.id]["items"].length}
+                pizzasInCart={cartItems[pizza.id] && cartItems[pizza.id]["pizzaGroup"].length}
                 isLoaded={isLoaded}
                 {...pizza}
               />
