@@ -96,8 +96,14 @@ const cart = (state = initialState, action) => {
           },
         },
         totalPrice:
-          state.totalPrice - state.pizzas[action.payload].pizzaGroup[0].price,
-        totalCount: state.totalCount - 1,
+          currentPizzaGroup.length > 1
+            ? state.totalPrice -
+              state.pizzas[action.payload].pizzaGroup[0].price
+            : state.totalPrice,
+        totalCount:
+          currentPizzaGroup.length > 1
+            ? state.totalCount - 1
+            : state.totalCount,
       };
     }
 
