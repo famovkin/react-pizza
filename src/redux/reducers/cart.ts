@@ -1,16 +1,19 @@
-const initialState = {
+import { Pizza } from '../../types/pizzas';
+import { CartState, CartActionTypes, CartAction } from '../../types/cart';
+
+const initialState: CartState = {
   pizzas: {},
   totalPrice: 0,
   totalCount: 0,
 };
 
-const getTotalPrice = (array) => {
+const getTotalPrice = (array: Array<Pizza>) => {
   return array.reduce((sum, item) => sum + item['price'], 0);
 };
 
-const cart = (state = initialState, action) => {
+const cart = (state = initialState, action: CartAction) => {
   switch (action.type) {
-    case 'ADD_PIZZA_CART': {
+    case CartActionTypes.ADD_PIZZA_CART: {
       const addedPizzaGroup = !state.pizzas[action.payload.id]
         ? [action.payload]
         : [...state.pizzas[action.payload.id].pizzaGroup, action.payload];
@@ -26,7 +29,7 @@ const cart = (state = initialState, action) => {
       const allPizzas = Object.values(updatedPizzas).map(
         (obj) => obj.pizzaGroup
       );
-      const allPizzasInArray = [].concat.apply([], allPizzas);
+      const allPizzasInArray = Array.prototype.concat.apply([], allPizzas);
 
       return {
         ...state,
@@ -36,7 +39,7 @@ const cart = (state = initialState, action) => {
       };
     }
 
-    case 'CLEAR_CART': {
+    case CartActionTypes.CLEAR_CART: {
       return {
         pizzas: {},
         totalPrice: 0,
@@ -44,7 +47,7 @@ const cart = (state = initialState, action) => {
       };
     }
 
-    case 'REMOVE_CART_ITEM': {
+    case CartActionTypes.REMOVE_CART_ITEM: {
       const updatedPizzas = { ...state.pizzas };
       const deletedTotalPrice = updatedPizzas[action.payload].totalPriceGroup;
       const deletedTotalCount = updatedPizzas[action.payload].pizzaGroup.length;
@@ -58,7 +61,7 @@ const cart = (state = initialState, action) => {
       };
     }
 
-    case 'PLUS_CART_ITEM': {
+    case CartActionTypes.PLUS_CART_ITEM: {
       const increasedPizzaItems = [
         ...state.pizzas[action.payload].pizzaGroup,
         state.pizzas[action.payload].pizzaGroup[0],
@@ -79,7 +82,7 @@ const cart = (state = initialState, action) => {
       };
     }
 
-    case 'MINUS_CART_ITEM': {
+    case CartActionTypes.MINUS_CART_ITEM: {
       const currentPizzaGroup = state.pizzas[action.payload].pizzaGroup;
       const updatedPizzaGroup =
         currentPizzaGroup.length > 1
