@@ -1,7 +1,7 @@
 import { PizzasState, PizzasActions } from '../../types/pizzas';
 
 const initialState = {
-  items: [],
+  pizzas: [],
   isLoaded: false,
 };
 
@@ -10,7 +10,7 @@ const pizzas = (state = initialState, action: PizzasActions): PizzasState => {
     case 'SET_PIZZAS':
       return {
         ...state,
-        items: action.payload,
+        pizzas: action.payload,
         isLoaded: true,
       };
 

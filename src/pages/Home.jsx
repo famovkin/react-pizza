@@ -26,7 +26,7 @@ const sortItems = [
 
 function Home() {
   const dispatch = useDispatch();
-  const items = useSelector(({ pizzasReducer }) => pizzasReducer.items);
+  const items = useSelector(({ pizzasReducer }) => pizzasReducer.pizzas);
   const cartItems = useSelector(({ cartReducer }) => cartReducer.pizzas);
   const isLoaded = useSelector(({ pizzasReducer }) => pizzasReducer.isLoaded);
   const { category, sortBy } = useSelector(

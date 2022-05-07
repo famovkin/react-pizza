@@ -1,6 +1,6 @@
 export interface PizzasState {
+  pizzas: Array<Pizza>;
   isLoaded: boolean;
-  items: Array<Pizza>;
 }
 
 export interface Pizza {
@@ -15,14 +15,14 @@ export interface Pizza {
 export const SET_PIZZAS = 'SET_PIZZAS';
 export const SET_LOADED = 'SET_LOADED';
 
-interface SetPizzasAction {
+export interface SetPizzasAction {
   type: typeof SET_PIZZAS;
   payload: Array<Pizza>;
 }
 
-interface SetLoaded {
+export interface SetLoadedAction {
   type: typeof SET_LOADED;
   payload: boolean;
 }
 
-export type PizzasActions = SetPizzasAction | SetLoaded;
+export type PizzasActions = SetPizzasAction | SetLoadedAction;
