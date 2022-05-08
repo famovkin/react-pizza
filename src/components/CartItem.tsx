@@ -1,7 +1,9 @@
-import React from "react";
-import Button from "./Button";
+import { FC } from "react";
 
-function CartItem({
+import Button from "./Button";
+import { CartItemProps } from "../types/cartItem";
+
+const CartItem: FC<CartItemProps> = ({
   name,
   type,
   size,
@@ -11,8 +13,8 @@ function CartItem({
   id,
   handlePlusClick,
   handleMinusClick,
-  image,
-}) {
+  imageUrl,
+}) => {
   const onDeleteCartItem = () => deleteItem(id);
   const onPlus = () => handlePlusClick(id);
   const onMinus = () => handleMinusClick(id);
@@ -21,7 +23,7 @@ function CartItem({
     <div className="cart-item cart__cart-item">
       <div className="cart-item__image">
         <img
-          src={image}
+          src={imageUrl}
           alt="pizza"
         />
       </div>
