@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "mini-css-extract-plugin": "2.4.5"
   }
 }

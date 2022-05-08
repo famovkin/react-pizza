@@ -11,7 +11,7 @@ const getTotalPrice = (array: Array<Pizza>) => {
   return array.reduce((sum, item) => sum + item['price'], 0);
 };
 
-const cart = (state = initialState, action: CartAction) => {
+const cart = (state = initialState, action: CartAction): CartState => {
   switch (action.type) {
     case CartActionTypes.ADD_PIZZA_CART: {
       const addedPizzaGroup = !state.pizzas[action.payload.id]
