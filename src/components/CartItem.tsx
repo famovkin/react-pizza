@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import Button from "./Button";
+import { Button } from ".";
 import { CartItemProps } from "../types/cartItem";
 
 const CartItem: FC<CartItemProps> = ({
