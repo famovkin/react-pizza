@@ -11,11 +11,11 @@ import { fetchPizzas } from "../redux/actions/pizzas";
 import { addPizzaToCart } from "../redux/actions/cart";
 
 const categoryNames = [
-  "Мясные",
+  "Классические",
   "Вегетарианская",
   "Гриль",
   "Острые",
-  "Закрытые",
+  "Новые",
 ];
 
 const sortItems = [
